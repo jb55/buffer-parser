@@ -1,6 +1,8 @@
 
 # buffer-parser
 
+  [![Build Status](https://travis-ci.org/jb55/buffer-parser.svg)](https://travis-ci.org/jb55/buffer-parser)
+
   Minimal buffer parser
 
 ## Installation
@@ -15,12 +17,12 @@
 var bufferParser = require('buffer-parser')
 var parser = bufferParser(data)
 
-var pbyte = parser.uint8(),
-var num = parser.uint32le(),
-var float = parser.floatle(),
-var buf = parser.buffer(4),
-parser.skip(4),
-var dub = parser.doublebe(),
+var pbyte = parser.uint8()
+var num = parser.uint32le()
+var float = parser.floatle()
+var buf = parser.buffer(4)
+parser.skip(4)
+var dub = parser.doublebe()
 
 var offset = parser.offset
 ```
