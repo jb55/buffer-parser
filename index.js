@@ -12,6 +12,10 @@ BufferParser.prototype.skip = function (n) {
   this.offset += n
 }
 
+BufferParser.prototype.eof = function () {
+  return this.offset >= this.buf.length
+}
+
 BufferParser.prototype.buffer = function (n) {
   var buf = this.buf.slice(this.offset, this.offset + n)
   this.offset += n

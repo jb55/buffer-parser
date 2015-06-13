@@ -4,7 +4,7 @@ var concentrate = require('concentrate')
 var bufferParser = require('./')
 
 
-test('basic parsing works', function (t) {
+test('basic parsing', function (t) {
   var smallbuf = Buffer([1,2,3,4])
   var data = concentrate()
       .uint8(1)
@@ -28,4 +28,20 @@ test('basic parsing works', function (t) {
   ]
 
   t.deepEqual(parsed, [1, 555, 3, smallbuf, smallbuf, 1000])
+})
+
+
+test('eof', function (t) {
+  t.plan(3)
+
+  var empty = bufferParser(Buffer([]))
+  var one = bufferParser(Buffer([1]))
+  var two = bufferParser(Buffer([1,2]))
+
+  t.ok(empty.eof(), 'empty buffer should be eof')
+  t.notOk(one.eof(), 'untouched one buffer should not be eof')
+
+  one.int8()
+
+  t.ok(one.eof(), 'touched one buffer should be eof')
 })
