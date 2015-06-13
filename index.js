@@ -1,18 +1,18 @@
 
-module.exports = BufferConsumer
+module.exports = BufferParser
 
-function BufferConsumer(buf) {
-  if (!(this instanceof BufferConsumer))
-    return new BufferConsumer(buf)
+function BufferParser(buf) {
+  if (!(this instanceof BufferParser))
+    return new BufferParser(buf)
   this.buf = buf;
   this.offset = 0;
 }
 
-BufferConsumer.prototype.skip = function (n) {
+BufferParser.prototype.skip = function (n) {
   this.offset += n
 }
 
-BufferConsumer.prototype.buffer = function (n) {
+BufferParser.prototype.buffer = function (n) {
   var buf = this.buf.slice(this.offset, this.offset + n)
   this.offset += n
   return buf
@@ -24,7 +24,7 @@ BufferConsumer.prototype.buffer = function (n) {
     if (key.indexOf("read") === 0) {
       var size = determineSize(key)
       var nicerKey = key.slice(4).toLowerCase()
-      BufferConsumer.prototype[nicerKey] = function () {
+      BufferParser.prototype[nicerKey] = function () {
         var val = Buffer.prototype[key].call(this.buf, this.offset)
         this.offset += size
         return val
