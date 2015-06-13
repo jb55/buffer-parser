@@ -1,0 +1,22 @@
+{
+  "name": "buffer-parser",
+  "description": "Minimal buffer parser",
+  "version": "0.1.0",
+  "keywords": [
+    "binary",
+    "parser",
+    "buffer"
+  ],
+  "repository": {
+    "url": "https://github.com/jb55/buffer-parser"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concentrate": "^0.2.3",
+    "tape": "*"
+  }
+}
